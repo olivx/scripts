@@ -1,0 +1,7 @@
+
+
+
+
+select * from CONTAS_PAGAR_MIDIA where COD_PAGAR = 3038
+update CONTAS_PAGAR_MIDIA set QUEMQUIT_PAGAR = null , VALORREAL_PAGAR = 0.00, DATAQUIT_PAGAR =  null 
+where COD_PAGAR = 2964

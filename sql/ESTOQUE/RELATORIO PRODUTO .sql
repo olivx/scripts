@@ -1,0 +1,17 @@
+
+
+
+
+select DISTINCT 
+case 
+when c.EMPRESA_CMP = 'T' then 'TECHCD' 
+when c.EMPRESA_CMP = 'D' then 'DATA' 
+when c.EMPRESA_CMP = 'M' then 'MIDIA ' 
+END AS EMPRESA , P.COD_PROD AS CODIGO
+, P.DESC_PROD AS DESCRICAO , F.COD_FORN AS [COD FORNECEDOR]
+, F.NOME_FORN AS [NOME FORNECEDORES], F.CNPJ_FORN AS CNPJ 
+from PED_COMPRA as c
+inner join ITM_CMP as i  on c.COD_CMP = i.COD_CMP
+inner join FORNECEDORES as f  on c.COD_FORN = f.COD_FORN
+inner join PRODUTOS as p  on i.COD_PROD = p.COD_PROD
+ORDER BY EMPRESA ,P.COD_PROD ASC  
