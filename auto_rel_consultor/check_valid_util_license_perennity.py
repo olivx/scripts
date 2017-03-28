@@ -101,34 +101,3 @@ for _list in list_rows:
         ''' dicionario com dados preste a vencer que será enviado por e-mail para o suporte '''
         list_rows_i_need_send.append(dict_values)
 
-
-
-
-
-# ''' envia o email com as informações corretas '''
-# from_addr = 'thiago@techcd.com.br'
-# to_addr = 'thiago@techcd.com.br'
-# recipents =  ['thiago@techcd.com.br', 'oliveiravicente.net@gmail.com']
-#
-# message = MIMEMultipart()
-# message['From'] = from_addr
-# message['To'] = to_addr
-# message['Cc'] = ','.join(recipents)
-# message['Subject'] = 'Controle de Inslação de Linsença Perennity'
-#
-# body  = '''
-#
-# Essa é uma messagem de teste de envio
-#
-# '''
-#
-#
-# ''' menssagem a ser enviada '''
-# message.attach(MIMEText(body, 'plain'))
-#
-# smtp  = smtplib.SMTP('smtp.techcd.com.br', 587)
-# smtp.starttls()
-# smtp.login('thiago@techcd.com.br', 'mmnhbn')
-# text =  message.as_string()
-# smtp.sendmail(from_addr, recipents,  text)
-# smtp.quit()

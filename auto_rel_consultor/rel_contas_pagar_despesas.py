@@ -76,8 +76,8 @@ excel_despesas.close()
 
 from_addr = "thiago@techcd.com.br"
 to_addr = "thiago@techcd.com.br"
-recipents = ['vera.dc@revisaocontabil.com.br', 'lidia@techcd.com.br', 'wolf@techcd.com.br']
-# recipents = ['thiago@techcd.com.br','']
+# recipents = ['vera.dc@revisaocontabil.com.br', 'lidia@techcd.com.br', 'wolf@techcd.com.br']
+recipents = ['thiago@techcd.com.br','']
 
 message = MIMEMultipart()
 

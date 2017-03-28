@@ -1,10 +1,16 @@
-# **Scripts | Tools Admin**
+# **Scripts
 #### tenho algumas planilhas e alguns .vbs funcionando a ideia é trocar
 #### tudo por scripts em python, tenho alguns aplicativos em java também
 #### esses vou colocar em outro repositório mas pretendo mudar tudo para python
 
 Esse repositório vou deixar para guardar scripts utilizados que precisei usar em algum momento
 por alguma razão especifica assim se precisar de algo parecido já tenho um ponto de partida
+
+## **rel_consultor**
+esse relatório juntou os outros de vendas , contas , pagar , a receber e estoque para ele que ele possa
+possa fazer um consultoria em nossa contas nos orientando no carecimento  empresa , eu já criei as procedures no SQL-Server
+e automatizei o processo com Python sei que tem muito para evoluir no modo de escrever esse script  mas a solução esta funcionado muito
+bem e poupando um tempo valioso e tedioso que era fazer isso todos os mesmo e conferir, assim otimizei meu tempo  e resolvi um problema na empresa
 
 ## **script_clear_log & script_monitor_log**
 desenvolvido para eliminar um arquivo de log que está ficando muito grande e
