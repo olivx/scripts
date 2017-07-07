@@ -10,6 +10,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
 def relatorio(ini):
     # string de conexão
     _string_conection = 'DRIVER={FreeTDS};SERVER=192.168.0.204;PORT=1433;DATABASE=TECHCD;UID=sa;PWD=tigre177;TDS_Version=7.0'
@@ -22,7 +23,7 @@ def relatorio(ini):
     # params.append(datetime(2017,4,30))
 
     params.append(ini)
-    params.append(datetime(ini.year, _moth,  ini.day))
+    params.append(datetime(ini.year, _moth, ini.day))
 
     # nome do arquvios
     _report_file = 'relatorio_consultor_' + str(ini.date()) + '.xlsx'
@@ -166,7 +167,7 @@ def relatorio(ini):
     # send to e-mail
     _from = 'thiago@techcd.com.br'
     _to = 'thiago@techcd.com.br'
-    #recipents = ['thiago@techcd.com.br','rene@techcd.com.br']
+    # recipents = ['thiago@techcd.com.br','rene@techcd.com.br']
     recipents = ['thiago@techcd.com.br']
 
     message = MIMEMultipart()
@@ -229,9 +230,7 @@ def relatorio(ini):
 
 
 if __name__ == '__main__':
-
-
-        ini = datetime(2017 ,5 , 1)
-        relatorio(ini=ini)
-
-
+    today = datetime.today()
+    _moth = today.month - 1
+    ini = datetime(today.year, _moth, 1)
+    relatorio(ini=ini)
