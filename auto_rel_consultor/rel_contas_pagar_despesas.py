@@ -36,8 +36,12 @@ report_file_despesas = 'relatorio_despesas_' + str(now.date()) + '_.xlsx'
 _month = now.month - 2
 if _month <= 0:
     _month = 1
-parms.append(datetime(now.year, _month, 1))
-parms.append(datetime(now.year, now.month, 1))
+#
+# parms.append(datetime(now.year, _month, 1))
+# parms.append(datetime(now.year, now.month, 1))
+
+parms.append(datetime(1999, 1, 1))
+parms.append(datetime(2017, 5, 31))
 
 # ULTIMAL SOLICTAÇÃO DA CONTABILIDADE INVENTARIO
 # month_ = 8
@@ -142,7 +146,7 @@ text = message.as_string()
 server.sendmail(from_addr, recipents, text)
 server.quit()
 
-path_destination = '/home/olvx/Documentos/Relatorios /CONSULTOR/enviado_por_scripts/'
+path_destination = '/home/olivx/Documentos/Relatorios/CONSULTOR/enviado_por_scripts/'
 
 os.rename(file_name_pagar, path_destination + 'report_enviado_' + report_file_contas_pagar)
 os.rename(file_name_despesa, path_destination + 'report_enviado_' + report_file_despesas)
