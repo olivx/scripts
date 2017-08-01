@@ -19,15 +19,12 @@ def relatorio(ini):
     params, now = [], datetime.now()
     _moth = ini.month + 1
 
-    # params.append(datetime(2017, 1, 1))
-    # params.append(datetime(2017,4,30))
 
     params.append(ini)
     params.append(datetime(ini.year, _moth, ini.day))
 
     # nome do arquvios
     _report_file = 'relatorio_consultor_' + str(ini.date()) + '.xlsx'
-    # _report_file = 'relatorio_consultor_' + str(now.date()) + '.xlsx'
 
     # query's
     _query_faturamento_header = 'exec SP_REL_CONSULTOR_FATURAMENTO_HEADER @INI = ?, @FIM = ?'
@@ -35,6 +32,9 @@ def relatorio(ini):
     _query_saldo_de_estoque = 'exec SP_REL_CONSULTOR_SALDO_DE_ESTOQUE @PERIODO = ? '
     _query_contas_receber = 'exec SP_REL_CONSULTOR_CONTAS_RECEBER @INI = ? , @FIM = ?'
     _query_despesas = 'exec SP_REL_CONSULTOR_DESPESAS @INI = ? , @FIM = ?'
+    _query_compras = 'exec SP_REL_CONSULTOR_COMPRAS @INI = ? , @FIM = ?'
+
+
 
     # work on pandas
     excel = pandas.ExcelWriter(_report_file)
@@ -47,6 +47,7 @@ def relatorio(ini):
     report_contas_receber = pandas.read_sql_query(_query_contas_receber, connection, params=params)
     report_contas_pagar_fornecedor = pandas.read_sql_query(_query_despesas, connection, params=params)
     report_saldo_de_stoque = pandas.read_sql_query(_query_saldo_de_estoque, connection, params=[params[-1]])
+    report_compras =  pandas.read_sql_query(_query_compras, connection, params=params)
 
     # # sheet vendas
     report_faturamento_detail.to_excel(excel, sheet_name='VENDAS', index=False)
@@ -162,13 +163,16 @@ def relatorio(ini):
     # worksheet.set_column('K:R', 20, money_format)
     # worksheet.set_column('S:S', 15, aling_center)
 
+
+    report_compras.to_excel(excel, sheet_name='compras', index=False)
+
     excel.close()
 
     # send to e-mail
     _from = 'thiago@techcd.com.br'
     _to = 'thiago@techcd.com.br'
-    # recipents = ['thiago@techcd.com.br','rene@techcd.com.br']
-    recipents = ['thiago@techcd.com.br']
+    # recipents = ['thiago@techcd.com.br']
+    recipents = ['thiago@techcd.com.br', 'rene@techcd.com.br', 'arnaldo@techcd.com.br', 'ekaplan@e2gestao.com']
 
     message = MIMEMultipart()
 
@@ -230,7 +234,9 @@ def relatorio(ini):
 
 
 if __name__ == '__main__':
+
     today = datetime.today()
     _moth = today.month - 1
     ini = datetime(today.year, _moth, 1)
     relatorio(ini=ini)
+
