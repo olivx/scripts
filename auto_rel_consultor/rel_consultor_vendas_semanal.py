@@ -21,7 +21,7 @@ def relatorio(ini, finish):
     params.append(finish)
 
     # nome do arquvios
-    _report_file = 'relatorio_consultor_' + str(ini.date()) + '_' + str(finsh_date.date()) + '.xlsx'
+    _report_file = 'relatorio_consultor_' + str(ini.date()) + '_' + str(finish_date.date()) + '.xlsx'
 
     # query's
     _query_faturamento_header = 'exec SP_REL_CONSULTOR_FATURAMENTO_HEADER @INI = ?, @FIM = ?'
@@ -43,7 +43,7 @@ def relatorio(ini, finish):
     _from = 'thiago@techcd.com.br'
     _to = 'thiago@techcd.com.br'
     # recipents = ['thiago@techcd.com.br']
-    recipents = ['thiago@techcd.com.br', 'rene@techcd.com.br', 'arnaldo@techcd.com.br', 'ekaplan@e2gestao.com']
+    recipents = ['thiago@techcd.com.br', 'rene@techcd.com.br', 'ekaplan@e2gestao.com']
 
     message = MIMEMultipart()
 
@@ -106,12 +106,7 @@ def relatorio(ini, finish):
 
 if __name__ == '__main__':
     finish_date = datetime.today()
-    init_date = (finish_date.replace(hour=7, minute=0, second=0) - timedelta(days=31))
-
-    # print('data inicial', init_date)
-    # print('data final', finish_date)
-
-    # finsh_date = datetime.today()
-    # init_date = finsh_date - timedelta(days=72) # 2 meses
+    init_date = datetime(finish_date.year, finish_date.month, 1).replace(hour=7, minute=0, second=0)
+    # init_date = (finish_date.replace(hour=7, minute=0, second=0) - timedelta(days=31))
 
     relatorio(ini=init_date,finish=finish_date)
